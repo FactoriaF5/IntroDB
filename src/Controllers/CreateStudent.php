@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 
 use App\Models\Student;
-// use App\Database;
+
 
 require("../Database.php");
 require("../Models/Student.php");
