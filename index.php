@@ -10,7 +10,7 @@
 <body>
 
     <?php
-    require("src/ListStudents.php");
+    require("src/Controllers/ListStudents.php");
 
     ?>
 </body>

@@ -1,5 +1,5 @@
 <?php
-require("Database.php");
+require("src/Database.php");
 
 $database = new App\Database();
 
@@ -14,4 +14,4 @@ echo "</ul>";
 
 ?>
 
-<a href="src/CreateStudent.php">NUEVO</a>
+<a href="src/Controllers/CreateStudent.php">NUEVO</a>

@@ -2,7 +2,7 @@
 
 use phpDocumentor\Reflection\Location;
 
-require("Database.php");
+require("../Database.php");
 
 
 
@@ -14,7 +14,7 @@ if (!empty($_POST)) {
 
     $database->mysql->query("INSERT INTO `students` (`name`) VALUES ('{$_POST["name"]}');");
 
-    header('Location: ../index.php');
+    header('Location: ../../index.php');
 }
 
 
