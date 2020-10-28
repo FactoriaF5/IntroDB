@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 
 use App\Models\Student;
-use App\Database;
+// use App\Database;
 
 require("../Database.php");
 require("../Models/Student.php");
@@ -21,8 +21,6 @@ if (!empty($_POST)) {
 
     header('Location: ../../index.php');
 }
-
-
 
 ?>
 
