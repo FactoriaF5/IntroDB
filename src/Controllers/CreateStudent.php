@@ -1,16 +1,19 @@
 <?php
 
-use phpDocumentor\Reflection\Location;
-//use App\Models\Student;
+namespace App\Controllers;
+
+
+use App\Models\Student;
+use App\Database;
 
 require("../Database.php");
 require("../Models/Student.php");
 
 
 if (!empty($_POST)) {
-    $database = new App\Database();
+    $database = new Database();
 
-    $newStudent = new App\Models\Student($_POST["name"]);
+    $newStudent = new Student($_POST["name"]);
 
     $name = $newStudent->getName();
 
