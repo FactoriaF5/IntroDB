@@ -19,6 +19,7 @@ class Student
         $this->name = $name;
         $this->id = $id;
         $this->created_at = $created_at;
+
         if (!$this->database) {
             $this->database = new Database();
         }
@@ -38,6 +39,7 @@ class Student
     {
         return $this->created_at;
     }
+
 
     public function save(): void
     {

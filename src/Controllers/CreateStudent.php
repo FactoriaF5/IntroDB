@@ -10,14 +10,11 @@ require("../Database.php");
 require("../Models/Student.php");
 
 if (!empty($_POST)) {
-    //$database = new Database();
+
 
     $newStudent = new Student($_POST["name"]);
-
-    // $name = $newStudent->getName();
-    //$database->mysql->query("INSERT INTO `students` (`name`) VALUES ('$name');");
-
     $newStudent->save();
+
 
     header('Location: ../../index.php');
 }
