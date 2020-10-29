@@ -16,10 +16,15 @@ class StudentController
             return;
         }
 
+        if (isset($_GET) && ($_GET["action"] == "store")) {
+            $this->store($_POST);
+            return;
+        }
+
         $this->index();
     }
 
-    public function index()
+    public function index(): void
     {
         $student = new Student();
         $students = $student->all();
@@ -33,15 +38,20 @@ class StudentController
             "</ul> <a href='?action=create'>NUEVO</a>";
     }
 
-    public function create()
+    public function create(): void
     {
         echo  <<<TAG
         <h1>Nuevo Estudiante</h1>
 
-        <form action=CreateStudent.php" method="post">
+        <form action='?action=store' method="post">
             <input type="text" name="name">
             <input type="submit" value="Crear">
         </form>
         TAG;
+    }
+
+    public function store(array $request): void
+    {
+        var_dump($request);
     }
 }
