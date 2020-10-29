@@ -10,9 +10,7 @@
 <body>
 
     <?php
-    //require("src/Controllers/ListStudents.php");
 
-    //use App;
     require("vendor/autoload.php");
     require("src/index.php");
 

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\Views;
 use App\Models\Student;
 
 
@@ -10,9 +11,7 @@ class StudentController
 
     public function __construct()
     {
-        // if (!empty($_GET) && $_GET["action"]) {
-        //     $action = $_GET["action"];
-        // }
+
         $this->index();
     }
 
@@ -20,7 +19,6 @@ class StudentController
     {
         $student = new Student();
         $students = $student->all();
-
 
         echo "<ul>";
         foreach ($students as $student) {
