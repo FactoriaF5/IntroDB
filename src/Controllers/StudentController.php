@@ -2,9 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Core\Views;
 use App\Models\Student;
-use phpDocumentor\Reflection\DocBlock\Tag;
+
 
 class StudentController
 {
@@ -31,8 +30,7 @@ class StudentController
 
         echo "<ul>";
         foreach ($students as $student) {
-            echo "
-        <li> {$student->getId()} - {$student->getName()} - {$student->getCreatedAt()} - delete </li>";
+            echo "<li> {$student->getId()} - {$student->getName()} - {$student->getCreatedAt()} - delete </li>";
         }
         echo
             "</ul> <a href='?action=create'>NUEVO</a>";
@@ -52,6 +50,10 @@ class StudentController
 
     public function store(array $request): void
     {
-        var_dump($request);
+        $newStudent = new Student($request["name"]);
+        $newStudent->save();
+
+
+        header('Location: index.php');
     }
 }
