@@ -11,6 +11,10 @@ class StudentController
 
     public function __construct()
     {
+        if (isset($_GET) && ($_GET["action"] == "create")) {
+            $this->create();
+            return;
+        }
 
         $this->index();
     }
@@ -27,5 +31,10 @@ class StudentController
         }
         echo
             "</ul> <a href='src/Controllers/CreateStudent.php'>NUEVO</a>";
+    }
+
+    public function create()
+    {
+        echo "create";
     }
 }
