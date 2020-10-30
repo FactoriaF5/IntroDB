@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\View;
 use App\Models\Student;
 
 
@@ -28,12 +29,7 @@ class StudentController
         $student = new Student();
         $students = $student->all();
 
-        echo "<ul>";
-        foreach ($students as $student) {
-            echo "<li> {$student->getId()} - {$student->getName()} - {$student->getCreatedAt()} - delete </li>";
-        }
-        echo
-            "</ul> <a href='?action=create'>NUEVO</a>";
+        new View("studentsList", ["students" => $students]);
     }
 
     public function create(): void
