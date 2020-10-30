@@ -29,7 +29,10 @@ class StudentController
         $student = new Student();
         $students = $student->all();
 
-        new View("studentsList", ["students" => $students]);
+        new View("studentsList", [
+            "students" => $students,
+            "title" => "Lista Estudiantes"
+        ]);
     }
 
     public function create(): void

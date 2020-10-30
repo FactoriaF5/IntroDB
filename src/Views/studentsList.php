@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1 class="jumbotron">Lista de Estudiantes</h1>
+    <h1 class="jumbotron"><?php echo $data["title"]; ?></h1>
     <main class="container">
         <ul>
             <?php
