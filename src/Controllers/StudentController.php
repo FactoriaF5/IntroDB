@@ -22,7 +22,7 @@ class StudentController
         }
 
         if (isset($_GET) && ($_GET["action"] == "edit")) {
-            $this->edit();
+            $this->edit($_GET["id"]);
             return;
         }
 
@@ -71,9 +71,13 @@ class StudentController
         $this->index();
     }
 
-    public function edit()
+    public function edit($id)
     {
-        //search by id
+        //Find Student By Id
+        $studentHelper = new Student();
+        echo $studentHelper->findById($id)->getName();
+        //Execute view with student atributes
+        // echo "edit {$id}";
     }
 
     public function update(array $request)

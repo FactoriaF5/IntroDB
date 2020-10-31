@@ -63,4 +63,12 @@ class Student
     {
         $query = $this->database->mysql->query("DELETE FROM `students` WHERE `students`.`id` = {$id}");
     }
+
+    public function findById($id)
+    {
+        $query = $this->database->mysql->query("SELECT * FROM `students` WHERE `id` = {$id}");
+        $result = $query->fetchAll();
+
+        return new Student($result[0]["name"], $result[0]["id"], $result[0]["created_at"]);
+    }
 }
