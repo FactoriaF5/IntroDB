@@ -58,4 +58,9 @@ class Student
 
         return $studentList;
     }
+
+    public function deleteById($id)
+    {
+        $query = $this->database->mysql->query("DELETE FROM `students` WHERE `students`.`id` = {$id}");
+    }
 }

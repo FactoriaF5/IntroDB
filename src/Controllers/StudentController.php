@@ -31,6 +31,12 @@ class StudentController
             return;
         }
 
+        if (isset($_GET) && ($_GET["action"] == "delete")) {
+
+            $this->delete($_GET["id"]);
+            return;
+        }
+
         $this->index();
     }
 
@@ -53,6 +59,14 @@ class StudentController
     {
         $newStudent = new Student($request["name"]);
         $newStudent->save();
+
+        $this->index();
+    }
+
+    public function delete($id)
+    {
+        $studentHelper = new Student();
+        $studentHelper->deleteById($id);
 
         $this->index();
     }

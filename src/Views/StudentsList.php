@@ -30,7 +30,7 @@
                         <td>{$student->getCreatedAt()}</td>
                         <td>               
                             <i class='lnr lnr-pencil'></i>
-                            <i class='lnr lnr-trash'></i>
+                            <a href='?action=delete&id={$student->getId()}'><i class='lnr lnr-trash'></i></a>
                         </td>
                     </tr>
                     ";
