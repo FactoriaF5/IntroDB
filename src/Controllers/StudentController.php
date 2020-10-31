@@ -21,6 +21,16 @@ class StudentController
             return;
         }
 
+        if (isset($_GET) && ($_GET["action"] == "edit")) {
+            $this->edit();
+            return;
+        }
+
+        if (isset($_GET) && ($_GET["action"] == "update")) {
+            $this->update($_POST, $_GET["id"]);
+            return;
+        }
+
         $this->index();
     }
 
@@ -31,7 +41,6 @@ class StudentController
 
         new View("StudentsList", [
             "students" => $students,
-
         ]);
     }
 
@@ -45,7 +54,15 @@ class StudentController
         $newStudent = new Student($request["name"]);
         $newStudent->save();
 
+        $this->index();
+    }
 
-        header('Location: index.php');
+    public function edit()
+    {
+        //search by id
+    }
+
+    public function update(array $request)
+    {
     }
 }
