@@ -71,4 +71,10 @@ class Student
 
         return new Student($result[0]["name"], $result[0]["id"], $result[0]["created_at"]);
     }
+
+    public function UpdateById($data, $id)
+    {
+
+        $query = $this->database->mysql->query("UPDATE `students` SET `name` = '{$data["name"]}' WHERE `students`.`id` = 71");
+    }
 }

@@ -83,5 +83,9 @@ class StudentController
     public function update(array $request, $id)
     {
         // Update Student By ID
+        $studentHelper = new Student();
+        $studentHelper->updateById($request, $id);
+        // Return to Viwe List
+        $this->index();
     }
 }
