@@ -29,22 +29,15 @@ class StudentController
         $student = new Student();
         $students = $student->all();
 
-        new View("studentsList", [
+        new View("StudentsList", [
             "students" => $students,
-            "title" => "Lista Estudiantes"
+
         ]);
     }
 
     public function create(): void
     {
-        echo  <<<TAG
-        <h1>Nuevo Estudiante</h1>
-
-        <form action='?action=store' method="post">
-            <input type="text" name="name">
-            <input type="submit" value="Crear">
-        </form>
-        TAG;
+        new View("CreateStudent");
     }
 
     public function store(array $request): void
