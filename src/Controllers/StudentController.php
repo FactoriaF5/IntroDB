@@ -42,7 +42,7 @@ class StudentController
 
     public function index(): void
     {
-        //header("Location: index.php");
+
         $student = new Student();
         $students = $student->all();
 

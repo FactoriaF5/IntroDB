@@ -74,7 +74,7 @@ class Student
 
     public function UpdateById($data, $id)
     {
-        echo $data["name"];
+
         $this->database->mysql->query("UPDATE `students` SET `name` =  '{$data["name"]}' WHERE `id` = {$id}");
     }
 }
