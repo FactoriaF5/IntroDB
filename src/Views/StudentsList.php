@@ -29,7 +29,7 @@
                         <td>{$student->getName()}</td>
                         <td>{$student->getCreatedAt()}</td>
                         <td>               
-                            <i class='lnr lnr-pencil'></i>
+                        <a href='?action=edit&id={$student->getId()}'><i class='lnr lnr-pencil'></i></a>
                             <a href='?action=delete&id={$student->getId()}'><i class='lnr lnr-trash'></i></a>
                         </td>
                     </tr>
