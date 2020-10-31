@@ -15,25 +15,35 @@
     <h1 class="jumbotron text-center">Student Manager</h1>
     <main class="container">
         <a href="?action=create">
-
-            <button class="btn btn-primary btn-circle btn-lg"><i class="fas fa-plus"></i></button>
+            <button class="btn btn-primary btn-circle btn-lg">
+                <i class="fas fa-plus"></i>
+            </button>
         </a>
         <table class="table table-light">
+
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Created At</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+
             <tbody>
                 <?php
                 foreach ($data["students"] as $student) {
                     echo "
-                <tr>
-                    <td>{$student->getId()}</td>
-                    <td>{$student->getName()}</td>
-                    <td>{$student->getCreatedAt()}</td>
-                    <td>
-                        
-                        <i class='lnr lnr-pencil'></i>
-                        <i class='lnr lnr-trash'></i>
-                    </td>
-                </tr>
-                ";
+                    <tr>
+                        <td>{$student->getId()}</td>
+                        <td>{$student->getName()}</td>
+                        <td>{$student->getCreatedAt()}</td>
+                        <td>               
+                            <i class='lnr lnr-pencil'></i>
+                            <i class='lnr lnr-trash'></i>
+                        </td>
+                    </tr>
+                    ";
                 } ?>
 
             </tbody>
