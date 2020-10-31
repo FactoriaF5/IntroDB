@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\View;
 use App\Models\Student;
-
+use phpDocumentor\Reflection\Location;
 
 class StudentController
 {
@@ -42,6 +42,7 @@ class StudentController
 
     public function index(): void
     {
+        //header("Location: index.php");
         $student = new Student();
         $students = $student->all();
 
