@@ -75,12 +75,13 @@ class StudentController
     {
         //Find Student By Id
         $studentHelper = new Student();
-        echo $studentHelper->findById($id)->getName();
+        $student = $studentHelper->findById($id);
         //Execute view with student atributes
-        // echo "edit {$id}";
+        new View("EditStudent", ["student" => $student]);
     }
 
-    public function update(array $request)
+    public function update(array $request, $id)
     {
+        // Update Student By ID
     }
 }

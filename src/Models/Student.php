@@ -14,7 +14,7 @@ class Student
     private $database;
     private $table = "students";
 
-    public function __construct(string $name = 'nombre', int $id = null, string $created_at = null)
+    public function __construct(string $name = '', int $id = null, string $created_at = null)
     {
         $this->name = $name;
         $this->id = $id;
