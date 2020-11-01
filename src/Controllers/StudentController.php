@@ -67,7 +67,8 @@ class StudentController
     public function delete($id)
     {
         $studentHelper = new Student();
-        $studentHelper->deleteById($id);
+        $student = $studentHelper->findById($id);
+        $student->delete();
 
         $this->index();
     }
@@ -85,7 +86,9 @@ class StudentController
     {
         // Update Student By ID
         $studentHelper = new Student();
-        $studentHelper->updateById($request, $id);
+        $student = $studentHelper->findById($id);
+        $student->rename($request["name"]);
+        $student->update();
         // Return to Viwe List
         $this->index();
     }

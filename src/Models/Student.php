@@ -40,6 +40,10 @@ class Student
         return $this->created_at;
     }
 
+    public function rename($name)
+    {
+        $this->name = $name;
+    }
 
     public function save(): void
     {
@@ -64,6 +68,11 @@ class Student
         $query = $this->database->mysql->query("DELETE FROM `students` WHERE `students`.`id` = {$id}");
     }
 
+    public function delete()
+    {
+        $query = $this->database->mysql->query("DELETE FROM `students` WHERE `students`.`id` = {$this->id}");
+    }
+
     public function findById($id)
     {
         $query = $this->database->mysql->query("SELECT * FROM `students` WHERE `id` = {$id}");
@@ -74,7 +83,11 @@ class Student
 
     public function UpdateById($data, $id)
     {
-
         $this->database->mysql->query("UPDATE `students` SET `name` =  '{$data["name"]}' WHERE `id` = {$id}");
+    }
+
+    public function Update()
+    {
+        $this->database->mysql->query("UPDATE `students` SET `name` =  '{$this->name}' WHERE `id` = {$this->id}");
     }
 }
