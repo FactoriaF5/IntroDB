@@ -42,12 +42,10 @@ class StudentController
 
     public function index(): void
     {
-
-        $student = new Student();
-        $students = $student->all();
+        $studentsList = Student::all();
 
         new View("StudentsList", [
-            "students" => $students,
+            "students" => $studentsList,
         ]);
     }
 
@@ -66,30 +64,24 @@ class StudentController
 
     public function delete($id)
     {
-        $studentHelper = new Student();
-        $student = $studentHelper->findById($id);
-        $student->delete();
+        $studentToDelete = Student::findById($id);
+        $studentToDelete->delete();
 
         $this->index();
     }
 
     public function edit($id)
     {
-        //Find Student By Id
-        $studentHelper = new Student();
-        $student = $studentHelper->findById($id);
-        //Execute view with student atributes
-        new View("EditStudent", ["student" => $student]);
+        $studentToEdit = Student::findById($id);
+        new View("EditStudent", ["student" => $studentToEdit]);
     }
 
     public function update(array $request, $id)
     {
-        // Update Student By ID
-        $studentHelper = new Student();
-        $student = $studentHelper->findById($id);
-        $student->rename($request["name"]);
-        $student->update();
-        // Return to Viwe List
+        $studentToUpdate = Student::findById($id);
+        $studentToUpdate->rename($request["name"]);
+        $studentToUpdate->update();
+
         $this->index();
     }
 }

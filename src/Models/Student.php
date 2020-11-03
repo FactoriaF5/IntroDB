@@ -11,7 +11,7 @@ class Student
     private ?int $id;
     private string $name;
     private ?string $created_at;
-    private $database;
+    private static $database;
     private $table = "students";
 
     public function __construct(string $name = '', int $id = null, string $created_at = null)
@@ -50,13 +50,14 @@ class Student
         $this->database->mysql->query("INSERT INTO `{$this->table}` (`name`) VALUES ('$this->name');");
     }
 
-    public function all()
+    public static function all()
     {
-        $query = $this->database->mysql->query("select * FROM {$this->table}");
+        $database = new Database();
+        $query = $database->mysql->query("select * FROM students");
         $studentsArray = $query->fetchAll();
         $studentList = [];
         foreach ($studentsArray as $student) {
-            $studentItem = new Student($student["name"], $student["id"], $student["created_at"]);
+            $studentItem = new self($student["name"], $student["id"], $student["created_at"]);
             array_push($studentList, $studentItem);
         }
 
@@ -73,12 +74,13 @@ class Student
         $query = $this->database->mysql->query("DELETE FROM `students` WHERE `students`.`id` = {$this->id}");
     }
 
-    public function findById($id)
+    public static function findById($id): Student
     {
-        $query = $this->database->mysql->query("SELECT * FROM `students` WHERE `id` = {$id}");
+        $database = new Database();
+        $query = $database->mysql->query("SELECT * FROM `students` WHERE `id` = {$id}");
         $result = $query->fetchAll();
 
-        return new Student($result[0]["name"], $result[0]["id"], $result[0]["created_at"]);
+        return new self($result[0]["name"], $result[0]["id"], $result[0]["created_at"]);
     }
 
     public function UpdateById($data, $id)
