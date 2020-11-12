@@ -11,7 +11,7 @@ class Student
     private ?int $id;
     private string $name;
     private ?string $created_at;
-    private static $database;
+    private  $database;
     private $table = "students";
 
     public function __construct(string $name = '', int $id = null, string $created_at = null)
