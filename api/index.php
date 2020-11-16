@@ -1,8 +1,5 @@
 <?php
 
-echo "API";
-
-
 require("../vendor/autoload.php");
-
-$controller = new App\Controllers\ApiStudentController();
+header("Content-Type: application/json");
+new App\Controllers\ApiStudentController();
