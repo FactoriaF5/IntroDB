@@ -45,7 +45,7 @@ class Student
         $this->name = $name;
     }
 
-    public function save(): void
+    public function save()
     {
         $this->database->mysql->query("INSERT INTO `{$this->table}` (`name`) VALUES ('$this->name');");
     }
