@@ -9,26 +9,21 @@ use phpDocumentor\Reflection\Location;
 class ApiStudentController
 {
 
-    public function __construct()
+
+    public function __construct(string $method, array $content = null, $id = null)
     {
 
-        if (isset($_GET) && ($_GET["action"] == "store")) {
-            $this->store($_POST);
-            return;
+        if ($method == "GET") {
+            $this->index();
         }
 
-        if (isset($_GET) && ($_GET["action"] == "update")) {
-            $this->update($_POST, $_GET["id"]);
-            return;
+        if ($method == "POST") {
+            $this->store($content);
         }
 
-        if (isset($_GET) && ($_GET["action"] == "delete")) {
-
-            $this->delete($_GET["id"]);
-            return;
+        if ($method == "DELETE") {
+            $this->delete($id);
         }
-
-        $this->index();
     }
 
     public function index(): void
@@ -39,7 +34,8 @@ class ApiStudentController
         foreach ($studentsList as $student) {
             array_push($studentResponse, [
                 "id" => $student->getId(),
-                "name" => $student->getName()
+                "name" => $student->getName(),
+                "createdAt" => $student->getCreatedAt()
             ]);
         }
 
@@ -60,7 +56,7 @@ class ApiStudentController
         $studentToDelete = Student::findById($id);
         $studentToDelete->delete();
 
-        $this->index();
+        //$this->index();
     }
 
     public function update(array $request, $id)
